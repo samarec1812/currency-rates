@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/samarec1812/currency-rates/models"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"reflect"
@@ -84,17 +83,17 @@ func main() {
 
 	bytes, err := makeReq(DateProcessing(opts.Date))
 	if err != nil {
-		log.Fatalf(err.Error())
+		_, _ = fmt.Fprintln(os.Stderr, "request error:", err)
+		os.Exit(1)
 	}
 
 	var curse models.Currency
 	err = json.Unmarshal(bytes, &curse)
 	if err != nil {
-		log.Fatalf(err.Error())
+		_, _ = fmt.Fprintln(os.Stderr, "unmarshalling error:", err)
+		os.Exit(1)
 	}
 
-	//fmt.Println(curse.Valute)
-	//
 	fmt.Println(Show(curse.Valute, opts.Code))
 }
 

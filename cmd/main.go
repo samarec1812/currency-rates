@@ -48,7 +48,7 @@ func ParseFlags() (*Options, error) {
 
 func makeReq(date string) ([]byte, error) {
 
-	URL := fmt.Sprintf("https://www.cbr-xml-daily.ru/archive/%s/daily_json.js", date) ///  + params.Encode())
+	URL := fmt.Sprintf("https://www.cbr-xml-daily.ru/archive/%s/daily_json.js", date)
 	res, err := http.Get(URL)
 	if err != nil {
 		fmt.Println(err)
@@ -98,7 +98,7 @@ func main() {
 }
 
 func Show(s interface{}, code string) (res string) {
-	//a := reflect.ValueOf(s)
+
 	numField := reflect.ValueOf(s).NumField()
 	for i := 0; i < numField; i++ {
 		if reflect.TypeOf(s).Field(i).Tag.Get("json") == code {
@@ -106,8 +106,9 @@ func Show(s interface{}, code string) (res string) {
 			searchStruct := reflect.ValueOf(s).Field(i)
 
 			res = fmt.Sprintf("%s (%s): %f", searchStruct.FieldByName("CharCode"), searchStruct.FieldByName("Name"), searchStruct.FieldByName("Value").Float())
-			break
+			return
 		}
 	}
+	res = "request error: currency not found"
 	return
 }

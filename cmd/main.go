@@ -94,21 +94,27 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(Show(curse.Valute, opts.Code))
+	res, err := Show(curse.Valute, opts.Code)
+	if err != nil {
+		_, _ = fmt.Fprintln(os.Stderr, "request error:", err)
+		os.Exit(1)
+	}
+	fmt.Println(res)
 }
 
-func Show(s interface{}, code string) (res string) {
-
+func Show(s interface{}, code string) (string, error) {
+	res := ""
 	numField := reflect.ValueOf(s).NumField()
+
 	for i := 0; i < numField; i++ {
 		if reflect.TypeOf(s).Field(i).Tag.Get("json") == code {
 			//USD (Доллар США): 61,2475
 			searchStruct := reflect.ValueOf(s).Field(i)
 
 			res = fmt.Sprintf("%s (%s): %f", searchStruct.FieldByName("CharCode"), searchStruct.FieldByName("Name"), searchStruct.FieldByName("Value").Float())
-			return
+			return res, nil
 		}
 	}
-	res = "request error: currency not found"
-	return
+
+	return "", fmt.Errorf("currency not found")
 }

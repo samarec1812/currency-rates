@@ -23,27 +23,24 @@ Features
 - Выбор валюты по коду валюты из [справочника ЦБР](https://www.cbr.ru/scripts/XML_val.asp?d=0)
 
 
-[//]: # ()
-[//]: # (Installation)
 
-[//]: # (------------------------------------------------------------------------------)
+Installation
+------------------------------------------------------------------------------
 
-[//]: # ()
-[//]: # (```)
 
-[//]: # (go install )
+```
+curl -LO https://github.com/samarec1812/currency-rates/releases/currency-rates_0.0.1_${PLAT}.tar.qz
 
-[//]: # (```)
+
+tar -xvf currency-rates_0.0.1_${PLAT}.tar.qz
+```
 
 Usage
 ------------------------------------------------------------------------------
 ```commandline
-go run cmd/main.go --code=USD --date=2022-10-08
+currency-rates --code=USD --date=2022-10-08
 ```
-or 
-```
-./bin/currency-rates --code=USD --date=2022-10-08
-```
+
 Parameters
 ------
 

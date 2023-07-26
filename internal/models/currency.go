@@ -2,6 +2,7 @@ package models
 
 import "time"
 
+// Currency autogenerate code
 type Currency struct {
 	Date   time.Time `json:"Date"`
 	Valute struct {

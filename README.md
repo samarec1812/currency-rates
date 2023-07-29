@@ -37,10 +37,15 @@ tar -xvf currency-rates_0.0.1_${PLAT}.tar.qz
 
 Usage
 ------------------------------------------------------------------------------
+### Precompiled binaries
 ```commandline
 currency-rates --code=USD --date=2022-10-08
 ```
 
+### Docker images
+```commandline
+docker run --rm samarec1812/currency-rates --code=CNY --date=2022-08-09
+```
 Parameters
 ------
 

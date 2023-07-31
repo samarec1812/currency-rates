@@ -29,10 +29,10 @@ Installation
 
 
 ```
-curl -LO https://github.com/samarec1812/currency-rates/releases/currency-rates_0.0.1_${PLAT}.tar.qz
+curl -LO https://github.com/samarec1812/currency-rates/releases/currency-rates_0.0.2_${PLAT}.tar.gz
 
 
-tar -xvf currency-rates_0.0.1_${PLAT}.tar.qz
+tar -xvf currency-rates_0.0.2_${PLAT}.tar.gz
 ```
 
 Usage

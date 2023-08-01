@@ -8,11 +8,20 @@ lint:
 	golangci-lint run ./... -c ./.golangci.yml
 
 
+.PHONY: test
+test:
+	$(info Testing project...)
+	go test -v ./...
+
+
+
+
 .PHONY: build
 build:
 	$(info Build project...)
 	go mod tidy
 	go build -o bin/currency-rates cmd/main.go
+
 
 .PHONY: run
 run:
